@@ -57,7 +57,7 @@ def generalizable_testbox(
         # random.shuffle(tests)
         while len(tests) > 0:
             KILL_SWITCH(f="./kill-switch/kill-switch.json", k=test_name)
-            print(test_name)
+            print(f"test_name : Tests Remaining {len(tests)}")
             ## Get test
             test = tests.pop()
             ## Run Test

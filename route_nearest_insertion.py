@@ -55,6 +55,8 @@ def route_nearest_insertion(waypoints, start_min_arc=True, start_at=None, unknot
         waypoints = set(waypoints)
         waypoints.add(start_at)
     waypoints = sorted(sorted(list(waypoints), key=lambda x: x[0]), key=lambda x: x[1])
+    if len(waypoints) <= 1:
+        return waypoints, 0
     if start_at is not None:
         idx_start_at = waypoints.index(start_at)
     distance_matrix = scipy.spatial.distance.squareform(scipy.spatial.distance.pdist(waypoints))

@@ -1,0 +1,22 @@
+{
+    "max_influence": 150,
+    "min_influence": 0,
+    "base_scores": {
+        "visited": {
+            "damaged": 5,
+            "undamaged": 0
+        }
+    },
+    "short_memory_length": 25,
+    "long_memory_length": 100,
+    "routing_mode": "order_scores",
+    "min_score_to_consider": 0.49,
+    "tornado_data_file": "G:/project-archangel-spatial-data/1950-2021_all_tornadoes.csv",
+    "mag_limit": 1,
+    "bin_width": 5,
+    "influence_matrix_type": "data-driven",
+    "init_route": false,
+    "case_name": "MinScoreToConsider-0.49_InfluenceMatrixType-data-driven_InitRoute-False_RoutingMode-order_scores_MaxInfluence-150_Plots-main",
+    "pickles_location": "D:/PythonProjects/ProjectArchangel-AbstractCases-2022-10-15/pickles",
+    "plots": "main"
+}

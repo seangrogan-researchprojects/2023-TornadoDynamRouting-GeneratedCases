@@ -1,0 +1,22 @@
+{
+    "max_influence": 150,
+    "min_influence": 0,
+    "base_scores": {
+        "visited": {
+            "damaged": 5,
+            "undamaged": 0
+        }
+    },
+    "short_memory_length": 25,
+    "long_memory_length": 100,
+    "routing_mode": "order_scores",
+    "min_score_to_consider": 0,
+    "tornado_data_file": "./input_data/1950-2021_all_tornadoes.csv",
+    "mag_limit": 1,
+    "bin_width": 5,
+    "influence_matrix_type": "symmetric-first",
+    "init_route": false,
+    "case_name": "MinScoreToConsider-0_InfluenceMatrixType-symmetric-first_InitRoute-False_RoutingMode-order_scores_MaxInfluence-150_Plots-main",
+    "pickles_location": "./pickles/",
+    "plots": "main"
+}

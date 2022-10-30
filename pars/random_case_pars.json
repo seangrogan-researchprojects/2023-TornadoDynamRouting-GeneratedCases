@@ -1,0 +1,15 @@
+{
+    "bounds": [
+        0,
+        1000,
+        0,
+        1000
+    ],
+    "n_wpt": 1000,
+    "search_area_pars": {
+        "min_area": 0.33,
+        "max_area": 0.67,
+        "n_vertex": 4
+    },
+    "tornado_data_file": "./input_data/1950-2021_all_tornadoes.csv"
+}

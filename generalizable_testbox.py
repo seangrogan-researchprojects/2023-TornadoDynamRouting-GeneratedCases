@@ -8,6 +8,7 @@ from utilities.log_results import log_results
 from main import main
 from pars.parfile_reader import many_parfiles_reader, dump_parfile, parfile_reader
 from utilities.file_movers import clean_up
+from utilities.telegram_bot import telegram_bot_send_message
 from utilities.utilities import datetime_string, make_random_seed_list
 import time
 

@@ -1,4 +1,5 @@
 import telegram
+from telegram import ParseMode
 
 from pars.parfile_reader import parfile_reader
 
@@ -12,7 +13,8 @@ def telegram_bot_send_message(message, telegram_pars="./pars/telegram_api.json")
     bot = telegram.Bot(telegram_pars['api_key'])
     bot.sendMessage(
         chat_id=telegram_pars["chat_id"],
-        text=message
+        text=message,
+        parse_mode=ParseMode.HTML
     )
 
 if __name__ == '__main__':

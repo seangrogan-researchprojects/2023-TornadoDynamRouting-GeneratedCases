@@ -51,7 +51,7 @@ def generalizable_testbox(
     )
     last_messaged = 0
     try:
-        telegram_bot_send_message(f"Starting Project Archangel {test_name} at {datetime_string()}")
+        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nStarting Project Archangel at {datetime_string()}")
         tests = parfile_reader(test_file)
         # random.shuffle(tests)
         while len(tests) > 0:
@@ -82,14 +82,14 @@ def generalizable_testbox(
             )
             if len(tests) % 100 == 0 or time.time() - last_messaged > 6 * 60 * 60:
                 telegram_bot_send_message(
-                    f"Project Archangel {test_name} at {datetime_string(current=True)}: Remaining Tests {len(tests)}"
+                    f"<pre><b>{test_name}</b></pre>\nat {datetime_string(current=True)} Project Archangel, Remaining Tests {len(tests)}"
                 )
                 last_messaged = time.time()
     except:
         traceback.print_exc()
-        telegram_bot_send_message(f"Error in Project Archangel {test_name} at {datetime_string(current=True)}")
-        telegram_bot_send_message(f"TRACEBACK {test_name} : {traceback.format_exc()}")
-    telegram_bot_send_message(f"Finished Project Archangel {test_name} {datetime_string()} at {datetime_string(current=True)}")
+        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nERROR! at {datetime_string(current=True)}")
+        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nTRACEBACK :\n{traceback.format_exc()}")
+    telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nFinished Project Archangel at {datetime_string()} at {datetime_string(current=True)}")
 
 
 def KILL_SWITCH(f, k, set_val=None):

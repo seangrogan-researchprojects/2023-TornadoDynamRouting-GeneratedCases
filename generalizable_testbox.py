@@ -52,7 +52,8 @@ def generalizable_testbox(
     )
     last_messaged = 0
     try:
-        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nStarting Project Archangel at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        telegram_bot_send_message(
+            f"<pre><b>{test_name}</b></pre>\nStarting Project Archangel at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         tests = parfile_reader(test_file)
         # random.shuffle(tests)
         while len(tests) > 0:
@@ -81,16 +82,29 @@ def generalizable_testbox(
                 LOGFILE_base_folder_to_move=logfile_folder,
                 LOGFILE_destination=LOGFILE_destination
             )
-            if len(tests) % 100 == 0 or time.time() - last_messaged > 6 * 60 * 60:
-                telegram_bot_send_message(
-                    f"<pre><b>{test_name}</b></pre>\nAt {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Project Archangel, Remaining Tests {len(tests)}"
-                )
-                last_messaged = time.time()
+            if len(tests) % 100 == 0 or time.time() - last_messaged > 4 * 60 * 60:
+                if not is_in_time_range(
+                        begin=datetime.time(hour=(12 + 9), minute=0),
+                        end=datetime.time(hour=6, minute=0)
+                ):
+                    telegram_bot_send_message(
+                        f"<pre><b>{test_name}</b></pre>\nAt {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Project Archangel, Remaining Tests {len(tests)}"
+                    )
+                    last_messaged = time.time()
     except:
         traceback.print_exc()
-        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nERROR! at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        telegram_bot_send_message(
+            f"<pre><b>{test_name}</b></pre>\nERROR! at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nTRACEBACK :\n{traceback.format_exc()}")
-    telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nFinished Project Archangel {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    telegram_bot_send_message(
+        f"<pre><b>{test_name}</b></pre>\nFinished Project Archangel {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+
+def is_in_time_range(begin, end):
+    now = datetime.datetime.now()
+    if end <= begin:
+        return begin <= datetime.time(hour=now.hour, minute=now.minute, second=now.second) >= end
+    return begin <= datetime.time(hour=now.hour, minute=now.minute, second=now.second) <= end
 
 
 def KILL_SWITCH(f, k, set_val=None):

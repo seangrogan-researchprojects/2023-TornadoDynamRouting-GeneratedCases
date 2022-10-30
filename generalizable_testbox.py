@@ -106,7 +106,7 @@ def KILL_SWITCH(f, k, set_val=None):
 
 
 if __name__ == '__main__':
-    #Seeds here: 123, 456, 789
+    time.sleep(random.randint(1, 5))
     init_seed = int(sys.argv[1])
     test_name = f"{socket.gethostname()}-TEST-{init_seed}"
     print(test_name)

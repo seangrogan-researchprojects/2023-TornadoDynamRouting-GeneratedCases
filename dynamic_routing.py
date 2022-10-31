@@ -92,8 +92,8 @@ def dynamic_routing(waypoints_data, pars, random_seed, BASE_OUTPUT_FOLDER):
             short_memory.append(False)
             long_memory.append(False)
             all_memory.append(False)
-
-        waypoints_data = update_scores(waypoints_data,
+        if pars['plots'] in {'all'} or any(short_memory) or len(tour) <= 0:
+            waypoints_data = update_scores(waypoints_data,
                                        influence_matrix[influence_matrix_to_use],
                                        dist_matrix,
                                        pars["max_influence"], update_group_score=False)

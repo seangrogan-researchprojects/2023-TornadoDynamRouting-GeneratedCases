@@ -101,10 +101,15 @@ def generalizable_testbox(
 
 
 def is_in_time_range(begin, end):
+    if isinstance(begin, str):
+        begin = datetime.time(hour=time.strptime(begin, "%H:%M").tm_hour, minute=time.strptime(begin, "%H:%M").tm_min)
+    if isinstance(end, str):
+        end = datetime.time(hour=time.strptime(end, "%H:%M").tm_hour, minute=time.strptime(end, "%H:%M").tm_min)
     now = datetime.datetime.now()
+    now = datetime.time(hour=now.hour, minute=now.minute, second=now.second)
     if end <= begin:
-        return begin <= datetime.time(hour=now.hour, minute=now.minute, second=now.second) >= end
-    return begin <= datetime.time(hour=now.hour, minute=now.minute, second=now.second) <= end
+        return not is_in_time_range(end, begin)
+    return begin <= now <= end
 
 
 def KILL_SWITCH(f, k, set_val=None):

@@ -95,7 +95,7 @@ def generalizable_testbox(
         traceback.print_exc()
         telegram_bot_send_message(
             f"<pre><b>{test_name}</b></pre>\nERROR! at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nTRACEBACK :\n{traceback.format_exc()}")
+        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nTRACEBACK :\n<pre>{traceback.format_exc()}</pre>")
     telegram_bot_send_message(
         f"<pre><b>{test_name}</b></pre>\nFinished Project Archangel {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 

@@ -125,6 +125,21 @@ def KILL_SWITCH(f, k, set_val=None):
 if __name__ == '__main__':
     init_seed = int(sys.argv[1])
     test_name = f"{socket.gethostname()}-TEST-{init_seed}"
+    time.sleep(int(sys.argv[1][-1]))
+    data_destinations = {
+        "SEAN-POLY-DESK": "G:/project-archangel-outputs-EXPERIMENTS/",
+        "SEAN-LAP-T480": None, #todo
+        "SEAN-LAP-X1": None,#todo
+        "SEAN-HTPC": None,#todo
+        "SEAN-DESK-HOME":None#todo
+    }
+    log_destinations = {
+        "SEAN-POLY-DESK": "D:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/",
+        "SEAN-LAP-T480": None,#todo
+        "SEAN-LAP-X1": None,#todo
+        "SEAN-HTPC": None,#todo
+        "SEAN-DESK-HOME": None#todo
+    }
     print(test_name)
     _pars = dict(
         test_name=test_name,
@@ -133,8 +148,8 @@ if __name__ == '__main__':
         initial_seed=init_seed,
         number_of_seeds=50,
         skip_first_n_seeds=None,
-        destinations="D:/Users/seang/OneDrive - polymtl.ca/project-archangel-remote-outputs-EXPERIMENTS/",  # Point toward OneDrive
-        LOGFILE_destination="D:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/"
+        destinations=data_destinations[socket.gethostname()],  # Point toward OneDrive
+        LOGFILE_destination=log_destinations[socket.gethostname()]
     )
     if not os.path.exists(_pars["test_file"]):
         create_tests(**_pars)

@@ -27,11 +27,7 @@ def create_tests(
     )
     print(f"Creating Tests!")
     seeds = make_random_seed_list(number_of_seeds, initial_seed, skip_first_n_seeds)
-    if random.choice([True, False]):
-        _data = [dict(parfile=parfile, seed=seed) for parfile in parfiles for seed in seeds]
-    else:
-        _data = [dict(parfile=parfile, seed=seed) for seed in seeds for parfile in parfiles]
-    # random.shuffle(_data)
+    _data = [dict(parfile=parfile, seed=seed) for parfile in parfiles for seed in seeds]
     dump_parfile(_data, test_file)
 
 
@@ -127,19 +123,18 @@ def KILL_SWITCH(f, k, set_val=None):
 
 
 if __name__ == '__main__':
-    time.sleep(random.randint(1, 5))
     init_seed = int(sys.argv[1])
     test_name = f"{socket.gethostname()}-TEST-{init_seed}"
     print(test_name)
     _pars = dict(
         test_name=test_name,
-        many_parfiles_location="./pars/testing_folder_Oct26/",
-        test_file=f"./test_file/{test_name}.json",
+        many_parfiles_location="./pars/testing_folder_Nov1_Experiments/",
+        test_file=f"./test_file_Nov1_Experiments/{test_name}.json",
         initial_seed=init_seed,
-        number_of_seeds=100,
+        number_of_seeds=50,
         skip_first_n_seeds=None,
-        destinations="G:/OUTPUTS-project-archangel-AbstractCases/",  # Point toward OneDrive
-        LOGFILE_destination="D:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles/"
+        destinations="D:/Users/seang/OneDrive - polymtl.ca/project-archangel-remote-outputs-EXPERIMENTS/",  # Point toward OneDrive
+        LOGFILE_destination="D:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/"
     )
     if not os.path.exists(_pars["test_file"]):
         create_tests(**_pars)

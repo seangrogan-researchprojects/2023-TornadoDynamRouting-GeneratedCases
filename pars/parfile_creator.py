@@ -27,7 +27,7 @@ def parfile_creators(base_folder, filename, **kwargs):
         "init_route": True,
         "case_name": "base_case",
         "pickles_location": "./pickles/",
-        "plots": 'all'
+        "plots": 'main'
     }
     newparfile = deepcopy(default_pars)
     for key, value in kwargs.items():
@@ -63,14 +63,14 @@ if __name__ == '__main__':
     #     "max_influence": [100, 150, 200, 250],
     #     "plots": ['main']
     # }
-    outfolder = f"testing_folder_Oct26"
+    outfolder = f"testing_folder_Nov1_Experiments"
     alt_pars = {
-        "min_score_to_consider": [0, 0.1, 0.33, 0.49],
+        "min_score_to_consider": [0, 0.1, 0.2],
         "influence_matrix_type": ["symmetric", "data-driven", "symmetric-first", "data-driven-first"],
         "init_route": [True, False],
         "routing_mode": ["order_scores"],
-        "max_influence": [100, 150, 200],
-        "plots": ['main']
+        "max_influence": [100]
+        # "plots": ['main']
     }
     data = []
     for par, values in alt_pars.items():

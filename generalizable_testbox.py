@@ -128,17 +128,17 @@ if __name__ == '__main__':
     time.sleep(int(sys.argv[1][-1]))
     data_destinations = {
         "SEAN-POLY-DESK": "G:/project-archangel-outputs-EXPERIMENTS/",
-        "SEAN-LAP-T480": None, #todo
-        "SEAN-LAP-X1": None,#todo
-        "SEAN-HTPC": None,#todo
-        "SEAN-DESK-HOME":None#todo
+        "SEAN-LAP-T480": "C:/Users/seang/OneDrive - polymtl.ca/project-archangel-remote-outputs-EXPERIMENTS/",
+        "SEAN-LAP-X1": "C:/Users/seang/OneDrive - polymtl.ca/project-archangel-remote-outputs-EXPERIMENTS/",
+        "SEAN-HTPC": "C:/Users/seang/OneDrive - polymtl.ca/project-archangel-remote-outputs-EXPERIMENTS/",
+        "SEAN-DESK-HOME": None  # todo
     }
     log_destinations = {
         "SEAN-POLY-DESK": "D:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/",
-        "SEAN-LAP-T480": None,#todo
-        "SEAN-LAP-X1": None,#todo
-        "SEAN-HTPC": None,#todo
-        "SEAN-DESK-HOME": None#todo
+        "SEAN-LAP-T480": "C:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/",
+        "SEAN-LAP-X1": "C:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/",
+        "SEAN-HTPC": "C:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/",
+        "SEAN-DESK-HOME": None  # todo
     }
     print(test_name)
     _pars = dict(

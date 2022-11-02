@@ -82,7 +82,7 @@ def generalizable_testbox(
             )
             if time.time() - last_messaged > 4 * 60 * 60:
                 if not is_in_time_range(
-                        begin=datetime.time(hour=(12 + 9), minute=0),
+                        begin=datetime.time(hour=(12 + 8), minute=0),
                         end=datetime.time(hour=8, minute=0)
                 ):
                     telegram_bot_send_message(

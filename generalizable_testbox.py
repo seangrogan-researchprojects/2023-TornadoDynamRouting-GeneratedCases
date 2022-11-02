@@ -49,7 +49,9 @@ def generalizable_testbox(
     last_messaged = 0
     try:
         telegram_bot_send_message(
-            f"<pre><b>{test_name}</b></pre>\nStarting Project Archangel at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            f"<pre><b>{test_name}</b></pre>\n"
+            f"Starting!\n"
+            f"At {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         tests = parfile_reader(test_file)
         # random.shuffle(tests)
         while len(tests) > 0:
@@ -78,22 +80,35 @@ def generalizable_testbox(
                 LOGFILE_base_folder_to_move=logfile_folder,
                 LOGFILE_destination=LOGFILE_destination
             )
-            if len(tests) % 100 == 0 or time.time() - last_messaged > 4 * 60 * 60:
+            if time.time() - last_messaged > 4 * 60 * 60:
                 if not is_in_time_range(
                         begin=datetime.time(hour=(12 + 9), minute=0),
                         end=datetime.time(hour=8, minute=0)
                 ):
                     telegram_bot_send_message(
-                        f"<pre><b>{test_name}</b></pre>\nAt {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Project Archangel, Remaining Tests {len(tests)}"
+                        f"<pre><b>{test_name}</b></pre>\n"
+                        f"At {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+                        f"{len(tests)} remaining tests"
                     )
                     last_messaged = time.time()
     except:
         traceback.print_exc()
         telegram_bot_send_message(
-            f"<pre><b>{test_name}</b></pre>\nERROR! at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>\nTRACEBACK :\n<pre>{traceback.format_exc()}</pre>")
+            f"<pre><b>{test_name}</b></pre>"
+            f"\nERROR!\n"
+            f"At {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        telegram_bot_send_message(f"<pre><b>{test_name}</b></pre>"
+                                  f"\nTRACEBACK :\n"
+                                  f"<pre>{traceback.format_exc()}</pre>")
+    else:
+        telegram_bot_send_message(
+            f"<pre><b>{test_name}</b></pre>\n"
+            f"FINISHED SUCCESSFULLY!\n"
+            f"At {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     telegram_bot_send_message(
-        f"<pre><b>{test_name}</b></pre>\nFinished Project Archangel {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        f"<pre><b>{test_name}</b></pre>\n"
+        f"Teminated\n"
+        f"At {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 def is_in_time_range(begin, end):
@@ -146,8 +161,8 @@ if __name__ == '__main__':
         many_parfiles_location="./pars/testing_folder_Nov1_Experiments/",
         test_file=f"./test_file_Nov1_Experiments/{test_name}.json",
         initial_seed=init_seed,
-        number_of_seeds=50,
-        skip_first_n_seeds=None,
+        number_of_seeds=100,
+        skip_first_n_seeds=200,
         destinations=data_destinations[socket.gethostname()],  # Point toward OneDrive
         LOGFILE_destination=log_destinations[socket.gethostname()]
     )

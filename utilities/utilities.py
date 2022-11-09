@@ -3,9 +3,21 @@ import json
 import os
 import random
 
+from tqdm import tqdm
+
+
+def read_used_seed_file():
+    try:
+        file = "D:/Users/seang/OneDrive - polymtl.ca/project-archangel-logfiles-EXPERIMENTS/random_seeds_used.json"
+        with open(file) as f:
+            return json.load(f)
+    except:
+        return list()
+
 
 def make_random_seed_list(n_seeds, random_seed=None, skip_first_n_seeds=None):
     _ub = 1_000_000
+    used_seeds = read_used_seed_file()
     if n_seeds > _ub // n_seeds:
         _ub = _ub * n_seeds
     fac = 0
@@ -15,12 +27,18 @@ def make_random_seed_list(n_seeds, random_seed=None, skip_first_n_seeds=None):
             seeds.add(random.randint(1, _ub))
     if random_seed is not None:
         random.seed(random_seed)
-        fac -=1
+        if skip_first_n_seeds is not None:
+            fac -= 1
     seeds = set()
-    while len(seeds) < n_seeds-fac:
-        seeds.add(random.randint(1, _ub))
+    pbar = tqdm(desc="creating seeds")
+    while len(seeds) < n_seeds - fac:
+        seed = random.randint(1, _ub)
+        if seed not in used_seeds:
+            seeds.add(seed)
+            pbar.set_postfix_str(f"n_seeds = {len(seeds)}")
+        pbar.update()
     seeds = list(seeds)
-    if random_seed is not None:
+    if random_seed is not None and skip_first_n_seeds is not None:
         seeds.insert(0, random_seed)
     return list(seeds)
 

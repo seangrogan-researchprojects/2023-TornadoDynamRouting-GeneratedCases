@@ -96,7 +96,7 @@ def create_damage_polygon(pt, direction, length, width):
     p3 = (x + width * 0.5 * cos(radians(direction + 90)), y + width * 0.5 * sin(radians(direction + 90)))
     p4 = (x + width * 0.5 * cos(radians(direction - 90)), y + width * 0.5 * sin(radians(direction - 90)))
     damage = Polygon([[p1, p2, p3, p4][i] for i in ConvexHull([p1, p2, p3, p4]).vertices])
-    return damage
+    return damage, pt_end
 
 
 def create_faux_tornado(sbw, tornado_data_file, lb_x=0, ub_x=10_000, lb_y=0, ub_y=10_000):

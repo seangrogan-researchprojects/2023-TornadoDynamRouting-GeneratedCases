@@ -82,7 +82,7 @@ def generalizable_testbox(
             )
             if time.time() - last_messaged > 4 * 60 * 60:
                 if not is_in_time_range(
-                        begin=datetime.time(hour=(12 + 8), minute=0),
+                        begin=datetime.time(hour=(12 + 8), minute=30),
                         end=datetime.time(hour=8, minute=0)
                 ):
                     telegram_bot_send_message(
@@ -159,7 +159,7 @@ if __name__ == '__main__':
     _pars = dict(
         test_name=test_name,
         many_parfiles_location="./pars/testing_folder_Nov1_Experiments/",
-        test_file=f"./test_file_Nov1_Experiments/{test_name}.json",
+        test_file=f"./test_file_Nov9_Experiments/{test_name}.json",
         initial_seed=init_seed,
         number_of_seeds=50,
         skip_first_n_seeds=100,

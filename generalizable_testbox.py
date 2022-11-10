@@ -161,8 +161,8 @@ if __name__ == '__main__':
         many_parfiles_location="./pars/testing_folder_Nov1_Experiments/",
         test_file=f"./test_file_Nov1_Experiments/{test_name}.json",
         initial_seed=init_seed,
-        number_of_seeds=100,
-        skip_first_n_seeds=200,
+        number_of_seeds=50,
+        skip_first_n_seeds=100,
         destinations=data_destinations[socket.gethostname()],  # Point toward OneDrive
         LOGFILE_destination=log_destinations[socket.gethostname()]
     )

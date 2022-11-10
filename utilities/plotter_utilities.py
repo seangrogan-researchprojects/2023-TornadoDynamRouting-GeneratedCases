@@ -99,11 +99,16 @@ def plot_influence_matrix(influence_matrix, path=None, show=False, *,
 
 
 def plot_with_polygon_case(waypoints=None, sbw=None, sbw_verts=None,
-                           damage_poly=None, tornado_point=None,
+                           damage_poly=None, tornado_point=None, bounds=None,
+                           torn_path=None,
                            show=False, title=None, path=None, route=None):
     print(f"Plotting Case {path}")
     fig1, ax = plt.subplots()
     ax.set_aspect("equal")
+    if bounds:
+        lb_x, ub_x, lb_y, ub_y = bounds
+        plt.xlim(lb_x, ub_x)
+        plt.ylim(lb_y, ub_y)
     if waypoints:
         x, y = zip(*waypoints)
         plt.scatter(x, y)
@@ -115,9 +120,12 @@ def plot_with_polygon_case(waypoints=None, sbw=None, sbw_verts=None,
         plt.scatter(x, y, color='red')
     if tornado_point:
         plt.scatter(tornado_point[0], tornado_point[1], color='red', marker='v')
+    if torn_path:
+        x, y = zip(*torn_path)
+        plt.plot(x, y, color='gold')
     if damage_poly:
         x, y = damage_poly.exterior.xy
-        plt.plot(x, y, color='yellow')
+        plt.plot(x, y, color='gold')
     if route:
         x, y = zip(*route)
         plt.plot(x, y, color='blue')

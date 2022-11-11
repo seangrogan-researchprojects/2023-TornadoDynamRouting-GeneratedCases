@@ -64,7 +64,8 @@ def midpoint(p1, p2):
 
 
 def automkdir(filename):
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    if bool(os.path.dirname(filename)):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
 
 def my_round(x, precision=0, base=5):
